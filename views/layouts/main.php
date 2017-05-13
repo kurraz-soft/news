@@ -21,10 +21,10 @@ AppAsset::register($this);
     <meta property="og:description" content="<?= Html::encode($this->title) ?>">
     <script type="application/ld+json">
         {
-            '@context' => 'http://schema.org',
-            '@type' => 'Thing',
-            'name' => '<?= Html::encode($this->title) ?>',
-            'image' => 'http://<?= $_SERVER['SERVER_NAME'] ?>/img/news_logo.png'
+            "@context":"http://schema.org",
+            "@type":"Thing",
+            "name":"<?= Html::encode($this->title) ?>",
+            "image":"http://<?= $_SERVER['SERVER_NAME'] ?>/img/news_logo.png"
         }
     </script>
     <?= Html::csrfMetaTags() ?>
