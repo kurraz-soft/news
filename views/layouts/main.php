@@ -24,7 +24,7 @@ AppAsset::register($this);
             '@context' => 'http://schema.org',
             '@type' => 'Thing',
             'name' => '<?= Html::encode($this->title) ?>',
-            'image' => 'http://<?= $_SERVER['SERVER_NAME'] ?>/img/news_logo.png',
+            'image' => 'http://<?= $_SERVER['SERVER_NAME'] ?>/img/news_logo.png'
         }
     </script>
     <?= Html::csrfMetaTags() ?>
