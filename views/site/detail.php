@@ -5,7 +5,7 @@
  * Date: 25.10.2014
  *
  * @var $this yii\web\View
- * @var NewsTest $news
+ * @var News $news
  */
 use app\models\News;
 use yii\helpers\Html;

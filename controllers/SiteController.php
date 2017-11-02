@@ -31,7 +31,7 @@ class SiteController extends Controller
         $news = News::loadDetail($url);
         $news->detail_url = $url;
         return $this->render('detail',array(
-            'NewsTest' => $news,
+            'news' => $news,
         ));
     }
 }
