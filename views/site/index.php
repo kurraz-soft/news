@@ -7,7 +7,7 @@
 
 use \yii\helpers\Url;
 
-$this->title = 'News';
+$this->title = 'NewsTest';
 ?>
 <div class="row">
     <div class="col-sm-6">
