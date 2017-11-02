@@ -28,5 +28,5 @@ phpunit.phar
 /phpunit.xml
 
 config/db.php
-assets
+web/assets
 runtime
