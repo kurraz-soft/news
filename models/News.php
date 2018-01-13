@@ -81,20 +81,26 @@ class News extends Model
      */
     static public function loadDetail($url)
     {
-        $curl = new Curl();
-        $curl->url(self::SITE_URL.$url)->execute();
-        $html = $curl->result;
-        $doc = \phpQuery::newDocument($html);
+        $cache = \Yii::$app->cache;
 
-        $block = $doc->find('.print_container');
-        $news = new News();
-        $news->title = \phpQuery::pq($block)->find('h1:first')->text();
-        $news->date = \phpQuery::pq($block)->find('.article-head .author')->text();
-        $news->text = HtmlPurifier::process(\phpQuery::pq($block)->find('[itemprop="description"]')->html(),function($config){
-            $config->set('HTML.Allowed','p');
+        $news = $cache->getOrSet($url,function() use ($url) {
+            $curl = new Curl();
+            $curl->url(self::SITE_URL.$url)->execute();
+            $html = $curl->result;
+            $doc = \phpQuery::newDocument($html);
+
+            $block = $doc->find('.print_container');
+            $news = new News();
+            $news->title = \phpQuery::pq($block)->find('h1:first')->text();
+            $news->date = \phpQuery::pq($block)->find('.article-head .author')->text();
+            $news->text = HtmlPurifier::process(\phpQuery::pq($block)->find('[itemprop="description"]')->html(),function($config){
+                $config->set('HTML.Allowed','p');
+            });
+
+            $doc->unloadDocument();
+            return $news;
         });
 
-        $doc->unloadDocument();
         return $news;
     }
 } 
