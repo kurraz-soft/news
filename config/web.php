@@ -13,8 +13,13 @@ $config = [
             'enableCsrfValidation' => false,
         ],
         'cache' => [
-            'class' => \yii\caching\MemCache::className(),
+            'class' => \yii\caching\MemCache::class,
             'useMemcached' => true,
+            'servers' => [
+                'host' => 'localhost',
+                'port' => 11211,
+                'weight' => 100,
+            ]
         ],
         'user' => [
             'identityClass' => 'app\models\User',
