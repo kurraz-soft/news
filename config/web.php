@@ -16,9 +16,11 @@ $config = [
             'class' => \yii\caching\MemCache::class,
             'useMemcached' => true,
             'servers' => [
-                'host' => 'localhost',
-                'port' => 11211,
-                'weight' => 100,
+                [
+                    'host' => '127.0.0.1',
+                    'port' => 11211,
+                    'weight' => 100,
+                ],
             ]
         ],
         'user' => [
