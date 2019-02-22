@@ -35,7 +35,7 @@ class News extends Model
         $html = $curl->result;
         $doc = \phpQuery::newDocument(($html));
 
-        $block = $doc->find('.main-holder .content .item.large');
+        $block = $doc->find('.main-holder .content .item.large:first');
         $news = new News();
         $news->title = \phpQuery::pq($block)->find('h3')->text();
         $news->date = \phpQuery::pq($block)->find('.date')->text();
