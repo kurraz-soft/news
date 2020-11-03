@@ -37,7 +37,7 @@ class News extends Model
 
         $block = $doc->find('.main-holder .content .item.large:first');
         $news = new News();
-        $news->title = \phpQuery::pq($block)->find('h3')->text();
+        $news->title = \phpQuery::pq($block)->find('img')->attr('alt');
         $news->date = \phpQuery::pq($block)->find('.date')->text();
         $news->text = \phpQuery::pq($block)->find('[itemprop="description"]')->text();
         $news->detail_url = base64_encode(\phpQuery::pq($block)->find('a:first')->attr('href'));
@@ -62,7 +62,7 @@ class News extends Model
         foreach($tags as $tag)
         {
             $news = new News();
-            $news->title = \phpQuery::pq($tag)->find('h3')->text();
+            $news->title = \phpQuery::pq($tag)->find('.news-title')->text();
             $news->date = \phpQuery::pq($tag)->children('.date')->text();
             $news->detail_url = base64_encode(\phpQuery::pq($tag)->find('a')->attr('href'));
             $news->is_hot = \phpQuery::pq($tag)->hasClass('important');
